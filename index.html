@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Mastery | Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="parallax-wrapper" id="parallax">
+        <div class="orb orb-1" data-speed="2"></div>
+        <div class="orb orb-2" data-speed="-2"></div>
+        <div class="orb orb-3" data-speed="4"></div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <h1>ML Mastery</h1>
+            <div class="score-board">
+                <div class="score-item score-green">Known: <span id="score-knew">0</span></div>
+                <div class="score-item score-red">Review: <span id="score-didnt">0</span></div>
+            </div>
+        </header>
+
+        <div class="card-scene" onclick="toggleFlip()">
+            <div class="card" id="flashcard">
+                <div class="card-face card-front">
+                    <div class="label">Question</div>
+                    <div class="content" id="card-question">Loading...</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="label" style="color: var(--accent-gold);">Answer</div>
+                    <div class="content" id="card-answer">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-reveal" onclick="toggleFlip()"> Show Answer / Flip </button>
+            
+            <div class="action-buttons">
+                <button class="btn-didnt" onclick="handleRate(false)">I didn't know</button>
+                <button class="btn-knew" onclick="handleRate(true)">I knew it</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-nav" onclick="changeCard(-1)">← Previous</button>
+                <span class="progress-text" id="progress-text">1 / 8</span>
+                <button class="btn-nav" onclick="changeCard(1)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

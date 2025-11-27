@@ -1,0 +1,238 @@
+ /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-gold: #f59e0b;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-speed: 0.6s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: white;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling for app-like feel */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* --- PARALLAX BACKGROUND --- */
+        .parallax-wrapper {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            transition: transform 0.1s linear;
+        }
+
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: #4f46e5;
+            top: -10%; left: -10%;
+        }
+
+        .orb-2 {
+            width: 300px; height: 300px;
+            background: #c026d3;
+            bottom: 10%; right: -5%;
+        }
+
+        .orb-3 {
+            width: 150px; height: 150px;
+            background: var(--accent-gold);
+            top: 40%; left: 60%;
+            opacity: 0.3;
+        }
+
+        /* --- MAIN APP CONTAINER --- */
+        .app-container {
+            width: 90%;
+            max-width: 500px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        /* --- HEADER & SCORE --- */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .score-item span { font-weight: 700; }
+        .score-green { color: var(--accent-green); }
+        .score-red { color: var(--accent-red); }
+
+        /* --- FLASHCARD SCENE --- */
+        .card-scene {
+            flex-grow: 1;
+            perspective: 1000px;
+            position: relative;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform var(--transition-speed);
+            transform-style: preserve-3d;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Class to trigger flip */
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            border-radius: 24px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .card-front {
+            background: white;
+        }
+
+        .card-back {
+            background: #f8fafc;
+            transform: rotateY(180deg);
+            border: 4px solid var(--accent-gold);
+        }
+
+        .label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .content {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* --- CONTROLS --- */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-main);
+        }
+
+        button:active { transform: scale(0.95); }
+
+        .btn-reveal {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+        .btn-reveal:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .btn-knew {
+            background: var(--accent-green);
+            color: #fff;
+            flex: 1;
+        }
+        .btn-knew:hover { background: #059669; }
+
+        .btn-didnt {
+            background: var(--accent-red);
+            color: #fff;
+            flex: 1;
+        }
+        .btn-didnt:hover { background: #dc2626; }
+
+        .btn-nav {
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            padding: 10px;
+        }
+        .btn-nav:hover { color: white; }
+
+        .progress-text {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
