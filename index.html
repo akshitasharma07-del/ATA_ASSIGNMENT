@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML Mastery | Flashcards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,10 +17,10 @@
 
     <div class="app-container">
         <header>
-            <h1>ML Mastery</h1>
+            <h1>ML Mastery | Flashcards 🧠</h1>
             <div class="score-board">
-                <div class="score-item score-green">Known: <span id="score-knew">0</span></div>
-                <div class="score-item score-red">Review: <span id="score-didnt">0</span></div>
+                <div class="score-item score-green">✨ Known: <span id="score-knew">0</span></div>
+                <div class="score-item score-red">📚 Review: <span id="score-didnt">0</span></div>
             </div>
         </header>
 
@@ -30,7 +31,7 @@
                     <div class="content" id="card-question">Loading...</div>
                 </div>
                 <div class="card-face card-back">
-                    <div class="label" style="color: var(--accent-gold);">Answer</div>
+                    <div class="label" style="color: var(--accent-main);">Answer</div>
                     <div class="content" id="card-answer">Loading...</div>
                 </div>
             </div>
@@ -40,14 +41,18 @@
             <button class="btn-reveal" onclick="toggleFlip()"> Show Answer / Flip </button>
             
             <div class="action-buttons">
-                <button class="btn-didnt" onclick="handleRate(false)">I didn't know</button>
-                <button class="btn-knew" onclick="handleRate(true)">I knew it</button>
+                <button class="btn-didnt" onclick="handleRate(false)">Didn't Know</button>
+                <button class="btn-knew" onclick="handleRate(true)">Knew It</button>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-bar" id="progress-bar"></div>
             </div>
 
             <div class="nav-buttons">
-                <button class="btn-nav" onclick="changeCard(-1)">← Previous</button>
+                <button class="btn-nav" onclick="changeCard(-1)">&#9664; Previous</button>
                 <span class="progress-text" id="progress-text">1 / 8</span>
-                <button class="btn-nav" onclick="changeCard(1)">Next →</button>
+                <button class="btn-nav" onclick="changeCard(1)">Next &#9654;</button>
             </div>
         </div>
     </div>
