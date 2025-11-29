@@ -31,14 +31,14 @@
                     <div class="content" id="card-question">Loading...</div>
                 </div>
                 <div class="card-face card-back">
-                    <div class="label" style="color: var(--accent-main);">Answer</div>
+                    <div class="label" id="back-label">Answer</div>
                     <div class="content" id="card-answer">Loading...</div>
                 </div>
             </div>
         </div>
 
         <div class="controls">
-            <button class="btn-reveal" onclick="toggleFlip()"> Show Answer / Flip </button>
+            <button class="btn-reveal" id="btn-reveal" onclick="toggleFlip()"> Show Answer / Flip </button>
             
             <div class="action-buttons">
                 <button class="btn-didnt" onclick="handleRate(false)">Didn't Know</button>
@@ -50,9 +50,9 @@
             </div>
 
             <div class="nav-buttons">
-                <button class="btn-nav" onclick="changeCard(-1)">&#9664; Previous</button>
+                <button class="btn-nav" id="btn-prev" onclick="changeCard(-1)">&#9664; Previous</button>
                 <span class="progress-text" id="progress-text">1 / 8</span>
-                <button class="btn-nav" onclick="changeCard(1)">Next &#9654;</button>
+                <button class="btn-nav" id="btn-next" onclick="changeCard(1)">Next &#9654;</button>
             </div>
         </div>
     </div>

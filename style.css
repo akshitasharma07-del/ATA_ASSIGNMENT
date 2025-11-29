@@ -1,22 +1,26 @@
 /* --- CSS VARIABLES & RESET --- */
 :root {
-    /* Sophisticated Dark Theme */
-    --bg-color: #0d1117; /* Very dark background */
-    --card-bg: #f7f7fa; /* Light card face for contrast */
-    --text-primary: #171c24;
-    --text-secondary: #4a5568;
-    /* Accent Colors */
-    --accent-main: #6366f1; /* Indigo */
-    --accent-secondary: #a855f7; /* Violet */
+    /* Updated Dark Theme with Blue/Cyan Focus */
+    --bg-color: #0d1a29; /* Deep blue background */
+    --card-bg: #e0f2fe; /* Very Light Blue for cards */
+    --card-back-bg: #f8ffff; /* Slightly lighter back */
+    --text-primary: #172534;
+    --text-secondary: #475569;
+
+    /* New Accent Colors */
+    --accent-main: #06b6d4; /* Cyan/Sky Blue */
+    --accent-secondary: #3b82f6; /* Brighter Blue */
     --accent-green: #10b981;
     --accent-red: #ef4444;
+
     /* Glassmorphism/Shadows */
-    --glass-bg: rgba(255, 255, 255, 0.05); /* Lighter glass */
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --shadow-subtle: 0 8px 15px rgba(0, 0, 0, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(6, 182, 212, 0.3); /* Blue tinted border */
+    --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    --shadow-subtle: 0 8px 15px rgba(0, 0, 0, 0.3);
+    
     --font-main: 'Poppins', sans-serif;
-    --transition-speed: 0.8s; /* Slower, smoother flip */
+    --transition-speed: 0.8s;
     --card-radius: 20px;
 }
 
@@ -25,7 +29,7 @@
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
-    color: #e5e7eb; /* Light gray for main text */
+    color: #e5e7eb;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -34,62 +38,61 @@ body {
     perspective: 1000px;
 }
 
-/* --- PARALLAX BACKGROUND (Refined Orbs) --- */
+/* --- PARALLAX BACKGROUND (Cohesive Orbs) --- */
 .parallax-wrapper {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
     overflow: hidden;
-    filter: saturate(1.5); /* Boost color saturation slightly */
 }
 
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px); /* Increased blur for smoother glow */
-    opacity: 0.4;
+    filter: blur(140px); /* More aggressive blur */
+    opacity: 0.5;
     transition: transform 0.1s linear;
 }
 
 .orb-1 {
     width: 450px; height: 450px;
-    background: var(--accent-main);
+    background: #4f46e5; /* Violet/Blue */
     top: 15%; left: 10%;
 }
 
 .orb-2 {
     width: 350px; height: 350px;
-    background: var(--accent-secondary);
+    background: var(--accent-main);
     bottom: 5%; right: 15%;
 }
 
 .orb-3 {
     width: 200px; height: 200px;
-    background: var(--accent-green);
+    background: var(--accent-secondary);
     top: 60%; left: 40%;
-    opacity: 0.25;
+    opacity: 0.3;
 }
 
 /* --- MAIN APP CONTAINER --- */
 .app-container {
     width: 90%;
-    max-width: 550px; /* Slightly wider */
-    height: 90vh; /* Slightly taller */
+    max-width: 550px;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 10;
 }
 
-/* --- HEADER & SCORE (Glassmorphism + Gradient) --- */
+/* --- HEADER & SCORE --- */
 header {
     text-align: center;
     margin-bottom: 30px;
-    backdrop-filter: blur(10px); /* Sharper blur */
+    backdrop-filter: blur(10px);
     background: var(--glass-bg);
     padding: 20px;
     border-radius: 20px;
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--glass-border); /* New blue glass border */
     box-shadow: var(--shadow-subtle);
 }
 
@@ -98,8 +101,7 @@ h1 {
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    /* Text Gradient for elegance */
-    background: linear-gradient(90deg, #ffffff, #d1d5db);
+    background: linear-gradient(90deg, #ffffff, #88d4f4); /* Lighter blue gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -132,18 +134,24 @@ h1 {
     position: relative;
     margin-bottom: 25px;
     cursor: pointer;
-    min-height: 400px; /* Ensure a minimum height */
+    min-height: 400px;
 }
 
 .card {
     width: 100%;
     height: 100%;
     position: relative;
-    /* Bounce effect */
     transition: transform var(--transition-speed) cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform-style: preserve-3d;
     border-radius: var(--card-radius);
     box-shadow: var(--shadow-strong);
+}
+
+/* Interactive Card Effect */
+.card:hover {
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card.is-flipped {
@@ -163,19 +171,18 @@ h1 {
     text-align: center;
     border-radius: var(--card-radius);
     color: var(--text-primary);
-    transition: background 0.3s ease;
 }
 
 .card-front {
-    background: var(--card-bg);
+    background: var(--card-bg); /* Light Blue Face */
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card-back {
-    background: #f0f0f5; /* Very light gray for slight difference */
+    background: var(--card-back-bg); /* Slightly Lighter Blue Back */
     transform: rotateY(180deg);
-    border: 5px solid var(--accent-main); /* Stronger border */
-    box-shadow: inset 0 0 15px rgba(99, 102, 241, 0.3); /* Inner glow */
+    border: 5px solid var(--accent-main); /* Cyan Border */
+    box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.3); /* Cyan Inner glow */
 }
 
 .label {
@@ -188,9 +195,14 @@ h1 {
 }
 
 .content {
-    font-size: 1.55rem; /* Larger and more prominent */
+    font-size: 1.55rem;
     line-height: 1.4;
     font-weight: 600;
+}
+
+/* Card Back Label Color Change */
+#back-label {
+    color: var(--accent-main) !important;
 }
 
 /* --- CONTROLS --- */
@@ -227,19 +239,19 @@ button {
 
 button:active { transform: scale(0.97); }
 
-/* Reveal Button - Elegant Glow */
+/* Reveal Button - Cyan Glow */
 .btn-reveal {
     background: var(--accent-main);
-    color: white;
-    box-shadow: 0 4px 20px -5px rgba(99, 102, 241, 0.6);
+    color: #fff;
+    box-shadow: 0 4px 20px -5px rgba(6, 182, 212, 0.7);
     width: 100%;
 }
 .btn-reveal:hover {
-    background: #4f46e5;
-    box-shadow: 0 6px 25px -5px rgba(99, 102, 241, 0.8);
+    background: #0891b2;
+    box-shadow: 0 6px 25px -5px rgba(6, 182, 212, 1);
 }
 
-/* Rating Buttons - Distinct colors with subtle pop */
+/* Rating Buttons - Increased interactivity */
 .btn-knew {
     background: var(--accent-green);
     color: #fff;
@@ -256,13 +268,13 @@ button:active { transform: scale(0.97); }
 }
 .btn-didnt:hover { background: #dc2626; }
 
-/* Navigation Buttons - Minimalist */
+/* Navigation Buttons - Subtle hover */
 .btn-nav {
     background: transparent;
     color: rgba(255,255,255,0.7);
     padding: 10px;
 }
-.btn-nav:hover { color: white; background: rgba(255, 255, 255, 0.1); }
+.btn-nav:hover { color: var(--accent-main); background: rgba(255, 255, 255, 0.1); }
 
 /* Progress Bar */
 .progress-indicator {
@@ -274,7 +286,7 @@ button:active { transform: scale(0.97); }
 }
 .progress-bar {
     height: 100%;
-    width: 0%; /* Controlled by JS */
+    width: 0%;
     background: linear-gradient(90deg, var(--accent-secondary), var(--accent-main));
     border-radius: 5px;
     transition: width 0.5s ease;

@@ -24,6 +24,8 @@ const progressEl = document.getElementById('progress-text');
 const scoreKnewEl = document.getElementById('score-knew');
 const scoreDidntEl = document.getElementById('score-didnt');
 const progressBarEl = document.getElementById('progress-bar');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
 /* --- INITIALIZATION --- */
 function init() {
@@ -48,13 +50,17 @@ function renderCard() {
 
 function updateContent() {
     const currentCard = deck[currentIndex];
-    questionEl.innerHTML = currentCard.q; // Use innerHTML to allow bolding in Q&A
+    questionEl.innerHTML = currentCard.q;
     answerEl.innerHTML = currentCard.a;
     progressEl.textContent = `${currentIndex + 1} / ${deck.length}`;
     
     // Update Progress Bar
     const progress = ((currentIndex + 1) / deck.length) * 100;
     progressBarEl.style.width = `${progress}%`;
+
+    // Disable navigation buttons at start/end for interactive feedback
+    btnPrev.disabled = currentIndex === 0;
+    btnNext.disabled = currentIndex === deck.length - 1;
 }
 
 function toggleFlip() {
@@ -88,7 +94,7 @@ function handleRate(knewIt) {
             if (currentIndex < deck.length - 1) {
                 setTimeout(() => {
                     changeCard(1);
-                }, 600); // Allow time for scoring feedback and animation
+                }, 600);
             } else {
                 // Deck Complete logic
                 alert(`Deck complete! You Knew: ${scoreKnew}, Reviewed: ${scoreDidnt}. Great studying!`);
@@ -99,7 +105,7 @@ function handleRate(knewIt) {
                 scoreDidntEl.textContent = scoreDidnt;
                 renderCard();
             }
-        }, 200); // Short delay after the flip is triggered
+        }, 200); 
     }
 }
 
@@ -108,7 +114,7 @@ function handleRate(knewIt) {
 function setupParallax() {
     document.addEventListener("mousemove", (e) => {
         const orbs = document.querySelectorAll('.orb');
-        const x = (window.innerWidth - e.pageX * 2) / 150; /* Softer movement */
+        const x = (window.innerWidth - e.pageX * 2) / 150;
         const y = (window.innerHeight - e.pageY * 2) / 150;
 
         orbs.forEach(orb => {
