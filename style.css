@@ -2,8 +2,8 @@
 :root {
     /* Updated Dark Theme with Blue/Cyan Focus */
     --bg-color: #0d1a29; /* Deep blue background */
-    --card-bg: #e0f2fe; /* Very Light Blue for cards */
-    --card-back-bg: #f8ffff; /* Slightly lighter back */
+    --card-bg: #e0f7fa; /* Very Light Cyan Blue for cards */
+    --card-back-bg: #f5ffff; /* Slightly Lighter Back */
     --text-primary: #172534;
     --text-secondary: #475569;
 
@@ -49,14 +49,14 @@ body {
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(140px); /* More aggressive blur */
+    filter: blur(140px);
     opacity: 0.5;
     transition: transform 0.1s linear;
 }
 
 .orb-1 {
     width: 450px; height: 450px;
-    background: #4f46e5; /* Violet/Blue */
+    background: #4f46e5; 
     top: 15%; left: 10%;
 }
 
@@ -92,7 +92,7 @@ header {
     background: var(--glass-bg);
     padding: 20px;
     border-radius: 20px;
-    border: 1px solid var(--glass-border); /* New blue glass border */
+    border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-subtle);
 }
 
@@ -101,7 +101,7 @@ h1 {
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, #ffffff, #88d4f4); /* Lighter blue gradient */
+    background: linear-gradient(90deg, #ffffff, #88d4f4); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -174,15 +174,17 @@ h1 {
 }
 
 .card-front {
-    background: var(--card-bg); /* Light Blue Face */
+    /* Use light cyan/blue background */
+    background: var(--card-bg); 
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card-back {
-    background: var(--card-back-bg); /* Slightly Lighter Blue Back */
+    /* Use slightly lighter blue background */
+    background: var(--card-back-bg); 
     transform: rotateY(180deg);
     border: 5px solid var(--accent-main); /* Cyan Border */
-    box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.3); /* Cyan Inner glow */
+    box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.3);
 }
 
 .label {
@@ -268,13 +270,22 @@ button:active { transform: scale(0.97); }
 }
 .btn-didnt:hover { background: #dc2626; }
 
-/* Navigation Buttons - Subtle hover */
+/* Navigation Buttons - Subtle hover and visual disabled state */
 .btn-nav {
     background: transparent;
     color: rgba(255,255,255,0.7);
     padding: 10px;
 }
 .btn-nav:hover { color: var(--accent-main); background: rgba(255, 255, 255, 0.1); }
+.btn-nav:disabled {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    background: transparent;
+}
+.btn-nav:disabled:hover {
+    color: rgba(255, 255, 255, 0.2);
+    background: transparent;
+}
 
 /* Progress Bar */
 .progress-indicator {
@@ -293,7 +304,7 @@ button:active { transform: scale(0.97); }
 }
 
 .progress-text {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
     font-weight: 300;
 }

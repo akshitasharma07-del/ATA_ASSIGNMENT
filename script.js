@@ -58,7 +58,7 @@ function updateContent() {
     const progress = ((currentIndex + 1) / deck.length) * 100;
     progressBarEl.style.width = `${progress}%`;
 
-    // Disable navigation buttons at start/end for interactive feedback
+    // Disable navigation buttons at start/end
     btnPrev.disabled = currentIndex === 0;
     btnNext.disabled = currentIndex === deck.length - 1;
 }
@@ -77,9 +77,9 @@ function changeCard(direction) {
 }
 
 function handleRate(knewIt) {
-    // Only update score if not currently flipped (to prevent double counting)
+    // Prevent scoring before flipping to show the answer
     if (!isFlipped) {
-        toggleFlip(); // Flip to show answer before scoring
+        toggleFlip();
         setTimeout(() => {
             // Update Score
             if (knewIt) {
@@ -131,5 +131,5 @@ window.toggleFlip = toggleFlip;
 window.changeCard = changeCard;
 window.handleRate = handleRate;
 
-// Run the app
+// Run the app when the script loads
 init();
